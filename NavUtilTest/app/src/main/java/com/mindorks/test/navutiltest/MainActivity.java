@@ -38,4 +38,10 @@ public class MainActivity extends AppCompatActivity {
         super.onNewIntent(intent);
         Toast.makeText(this, "Main Activity Resumed", Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

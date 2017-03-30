@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mindorks.test.navutiltest">
+          package="com.mindorks.test.navutiltest">
 
     <application
         android:allowBackup="true"
@@ -10,12 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity"
-            android:launchMode="singleTop">
+                  android:launchMode="singleTop">
             <!--singleTop is added so that onBackPress can call onNewIntent-->
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
@@ -25,11 +25,22 @@
             android:label="Sub Activity"
             android:launchMode="singleTop"
             android:parentActivityName=".MainActivity">
+
+            <intent-filter android:label="Nav Utils DeepLinker">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <!-- Accepts URIs that begin with "http://www.example.com/gizmos” -->
+                <data android:scheme="http"
+                      android:host="www.example.com"
+                      android:pathPrefix="/gizmos"/>
+            </intent-filter>
+
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <!--singleTop is added so that onBackPress can call onNewIntent-->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".MainActivity"/>
         </activity>
 
         <!-- A child of the main activity -->
@@ -37,12 +48,12 @@
             android:name=".SubSubActivity"
             android:label="Sub Sub Activity"
             android:launchMode="singleTop"
-            android:parentActivityName=".SubActivity" >
+            android:parentActivityName=".SubActivity">
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <!--singleTop is added so that onBackPress can call onNewIntent-->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".SubActivity" />
+                android:value=".SubActivity"/>
         </activity>
     </application>
 
